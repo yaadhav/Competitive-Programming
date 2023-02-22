@@ -1,10 +1,5 @@
 #include <bits/stdc++.h>
-
 using namespace std;
-
-string ltrim(const string &);
-string rtrim(const string &);
-vector<string> split(const string &);
 
 int pickingNumbers(vector<int> a) {
     int max=0, count=1;
@@ -40,6 +35,9 @@ int main()
         cin >> temp;
         a.push_back(temp);
     }
+
+    int res=pickingNumbers(a);
+    cout << res ;
 
     return 0;
 }
