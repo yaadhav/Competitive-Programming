@@ -6,30 +6,54 @@ int main()
     ios_base::sync_with_stdio(false);
     cin.tie(NULL);
 
-    char s[4][4];
-    bool check=false;
+    int t;
+    cin >> t;
 
-    for( int i=0; i<4; i++)
+    while(t--)
     {
-        for( int j=0; j<4; j++)
-            cin >> s[i][j];
-    }
+        int n, k;
+        cin >> n >> k;
 
-    for( int i=0; i<3; i++)
-    {
-        for( int j=0; j<3; j++)
+        vector<int> s;
+        int tp;
+        for( int i=0; i<n; i++)
         {
-            if( s[i][j]==s[i+1][j+1] && (s[i][j]==s[i+1][j] || s[i][j]==s[i][j+1]) )
-                check=true;
-            if( s[i+1][j]==s[i][j+1] && (s[i+1][j]==s[i][j] || s[i+1][j]==s[i+1][j+1]) )
-                    check=true;
+            cin >> tp;
+            s.push_back(tp);
         }
+        
+        sort( s.begin(), s.end());
+        s.push_back(-1);
+
+        int a=0, b=s[n-1], d=0;
+        for( int i=0; i<n; i++)
+        {
+            if( a==s[i] && a!=s[i+1])
+                a++;
+            if( s[i]!=s[i+1] )
+                d++;
+        }
+
+        if( a>b )
+        {
+            cout << d+k << endl;
+            continue;
+        }
+
+        int add = (a+b)%2==0 ? (a+b)/2:(a+b+1)/2 ;
+
+        bool check=0;
+        for( auto i: s )
+        {
+            if( i==add )
+                check=1;
+        }
+
+        if( !check && k>0 )
+            d++;
+
+        cout << d << endl;
     }
 
-    if(check)
-        cout << "YES" << endl;
-    else
-        cout << "NO" << endl;
-    
     return 0;
 }
