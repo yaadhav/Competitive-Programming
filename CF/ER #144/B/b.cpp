@@ -17,8 +17,10 @@ int main()
         cin >> a >> b;
 
         int count=0, tot=0;
-        bool check, intial=0, final=0;
+        bool intial=0, final=0;
+        
         vector<string> s;
+        string temp;
 
         for( int i=0; i<a.length(); i++)
         {
@@ -26,29 +28,26 @@ int main()
             {
                 if( a[i]=='*' || b[j]=='*')
                     continue;
-
-                string temp;
-                check=false;
-                while( a[i]==b[j])
+                    
+                temp="";
+                while( a[i]==b[j] && i<a.length() && j<b.length() )
                 {
                     if( i==0 && j==0 )
-                        intial=true;
+                        intial=1;
                     if( i==a.length()-1 && j==b.length()-1 )
-                        final=true;
+                        final=1;
 
-                    check=true;
                     temp+=a[i];
-                    a[i]='*';
-                    b[j]='*';
+                    a[i]=b[j]='*';
                     i++;
                     j++;
-                    tot++;
                 }
 
-                if(check)
+                if(temp.length()>0)
                 {
                     count++;
                     s.push_back(temp);
+                    tot+=temp.length();
                 }
             }
         }
@@ -58,26 +57,28 @@ int main()
         if( final )
             count--;
 
-        if( tot>=count+2 )
-            cout << "Yes\n" ;
-        else
+        if( tot<count+1 )
         {
             cout << "No\n" ;
             continue;
         }
+        else
+            cout << "Yes\n" ;
+        
         
         if( !intial )
-            cout << '*' ;
+            cout << "*" ;
 
         for( int i=0; i<s.size(); i++)
         {
             if( i!=0)
-                cout << '*'; 
+                cout << "*"; 
             cout << s[i] ;
         }
 
         if( !final )
-            cout << '*';
+            cout << "*";
+
         cout << endl ;
     } 
     
