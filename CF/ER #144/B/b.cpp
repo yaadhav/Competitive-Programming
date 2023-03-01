@@ -16,8 +16,19 @@ int main()
         string a, b;
         cin >> a >> b;
 
+        if( a[0]==b[0] )
+        {
+            cout << "Yes\n" << a[0] << "*\n";
+            continue;
+        }
+
+        else if( a.back()==b.back() )
+        {
+            cout << "Yes\n*" << a[0] << "\n";
+            continue;
+        }
+
         int count=0, tot=0;
-        bool intial=0, final=0;
         
         vector<string> s;
         string temp;
@@ -32,11 +43,6 @@ int main()
                 temp="";
                 while( a[i]==b[j] && i<a.length() && j<b.length() )
                 {
-                    if( i==0 && j==0 )
-                        intial=1;
-                    if( i==a.length()-1 && j==b.length()-1 )
-                        final=1;
-
                     temp+=a[i];
                     a[i]=b[j]='*';
                     i++;
@@ -52,11 +58,6 @@ int main()
             }
         }
 
-        if( intial )
-            count--;
-        if( final )
-            count--;
-
         if( tot<count+1 )
         {
             cout << "No\n" ;
@@ -64,22 +65,11 @@ int main()
         }
         else
             cout << "Yes\n" ;
-        
-        
-        if( !intial )
-            cout << "*" ;
 
         for( int i=0; i<s.size(); i++)
-        {
-            if( i!=0)
-                cout << "*"; 
-            cout << s[i] ;
-        }
+            cout << "*" << s[i] ;
 
-        if( !final )
-            cout << "*";
-
-        cout << endl ;
+        cout << "*\n" ;
     } 
     
     return 0;
