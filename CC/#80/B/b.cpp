@@ -1,4 +1,4 @@
-// Q : https://www.codechef.com/START79D/problems/BETDEAL
+// Q : https://www.codechef.com/problems/SINGLEUSE
 
 #include <bits/stdc++.h>
 using namespace std;

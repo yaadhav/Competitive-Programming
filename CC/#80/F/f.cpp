@@ -1,4 +1,4 @@
-// Q : https://www.codechef.com/START79D/problems/ONEORTWO
+// Q : https://www.codechef.com/problems/PERMSUBSEQ
 
 #include <bits/stdc++.h>
 using namespace std;
@@ -29,33 +29,34 @@ int main()
 
         sort( a.begin(), a.end() );
 
-        ll check=1, count=0;
+        ll check=1, count=1;
         for( ll i=0; i<n-1; i++)
         {
-            if( check!=a[i] )
-            {
+            if( a[i]!=a[i+1] )
+            { 
+                if( check==a[i] )
+                    check++;
+                else
+                    break;
+
                 num.push_back(count);
-                check++;
-                count=0;
-                i--;
+                count=1;
             }
             else
                 count++;
         }
 
+        if( check==a[n-1] )
         num.push_back(count);
-
-        for( auto i : num )
-            cout << i << " " ;
-        cout << endl ;
 
         ll mult=1, sum=0;
         for( ll i=0; i<num.size(); i++)
         {
             mult*=num[i];
             sum+=mult;            
-            cout << sum << "->";
         }
+
+        sum=sum%1000000007 ;
 
         cout << sum << endl;
     } 

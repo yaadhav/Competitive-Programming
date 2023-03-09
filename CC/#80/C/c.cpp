@@ -1,4 +1,4 @@
-// Q : https://www.codechef.com/START79D/problems/DISTOPPSUMS
+// Q : https://www.codechef.com/problems/RUNCOMPARE
 
 #include <bits/stdc++.h>
 using namespace std;

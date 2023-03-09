@@ -1,4 +1,4 @@
-// Q : https://www.codechef.com/START79D/problems/PRIMEFACT
+// Q : https://www.codechef.com/problems/EQUALELE
 
 #include <bits/stdc++.h>
 using namespace std;
