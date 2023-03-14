@@ -20,13 +20,33 @@ int main()
         m.push_back(temp);
     }
 
-    int sum=0;
+    int t=0, f=0;
     string ans="YES"; 
-    for( int i=0; i<n; i++)
+
+    for( int i=0; i<n && ans=="YES"; i++)
     {
-        if( m[i]-25>sum )
-            ans="NO";
-        sum+=m[i];
+       if( m[i]==100 )
+       {
+            if( t>0 && f>0 )
+            {
+                t--;
+                f--;
+            }
+            else if( t>2 )
+                t-=3;
+            else
+                ans="NO";
+       }
+       else if( m[i]==50 )
+       {
+            f++;
+            if( t>0 )
+                t--;
+            else
+                ans="NO";
+       }
+       else 
+            t++;
     }
 
     cout << ans << endl;
