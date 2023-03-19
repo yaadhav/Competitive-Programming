@@ -25,42 +25,26 @@ int main()
         ll a, b, x, y, n;
         cin >> a >> b >> x >> y >> n;
 
-        if( a>b )
+        if( a-x>=b-y )
         {
             Swap( a, b);
             Swap( x, y);
         }
 
-        if( a==b )
-        {
-            if( x>y )
-            Swap( x, y);
-        }
+        ll d=a-x+b-y-n;
 
-        a-=n;
-        if( a<x && b-(a+n)>n )
+        if( d>0 )
         {
-            n=x-a;
-            a=x;
-            b = b-n<y ? y:b-n ;
-        }
-        else if( a<x && b-(a+n)<=n )
-        {
-            a+=n;
-            b-=n;
-
-            if( b<y )
+            y+=d;
+            if( y>b )
             {
-                n=x-a;
-                a=x;
-                b = b-n<y ? y:b-n ;
+                d=y-b;
+                y=b;
+                x+=d;
             }
         }
 
-        a = a<0 ? 0:a;
-        b = b<0 ? 0:b;
-
-        cout << a*b << endl;    
+        cout << "ans" << x*y << endl;    
     }
     return 0;
 }
