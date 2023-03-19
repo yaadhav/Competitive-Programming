@@ -1,3 +1,5 @@
+// Q : https://codeforces.com/contest/1807/problem/C
+
 #include <bits/stdc++.h>
 using namespace std;
 
@@ -9,19 +11,23 @@ int main()
     int t;
     cin >> t ;
 
-    for( int cases=0; cases<t; cases++)
+    while(t--)
     {
         int n;
-        cin >> n ;
+        string s;
+        cin >> n >> s ;
 
-        vector<int> a;
-        int temp;
-
-        for( int i=0; i<n; i++)
+        string ans="YES";
+        for( int i=0; i<n && ans=="YES"; i++)
         {
-            cin >> temp;
-            a.push_back(temp);            
+            for( int j=i+1; j<n; j++)
+            {
+                if( s[i]==s[j] && i%2!=j%2 )
+                    ans="NO";
+            }              
         }
+
+        cout << ans << endl ;
     } 
     
     return 0;

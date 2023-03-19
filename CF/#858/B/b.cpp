@@ -1,3 +1,5 @@
+// Q : https://codeforces.com/contest/1807/problem/B
+
 #include <bits/stdc++.h>
 using namespace std;
 
@@ -9,19 +11,26 @@ int main()
     int t;
     cin >> t ;
 
-    for( int cases=0; cases<t; cases++)
+    while(t--)
     {
         int n;
         cin >> n ;
 
-        vector<int> a;
-        int temp;
-
+        int temp, odd=0, even=0;
         for( int i=0; i<n; i++)
         {
             cin >> temp;
-            a.push_back(temp);            
+
+            if( temp%2==0 )
+                even+=temp;
+            else
+                odd+=temp;
         }
+
+        if( even>odd )
+            cout << "YES\n" ;
+        else
+            cout << "NO\n" ;
     } 
     
     return 0;
