@@ -42,9 +42,7 @@ int main()
             for( ll i=l-1; i<r; i++)
                 out_sum+=b[i];
 
-            if( SUM%2==0 && in_sum%2==out_sum%2 )
-                ans="NO" ;
-            if( SUM%2==1 && in_sum%2!=out_sum%2 )
+            if( (SUM+in_sum-out_sum)%2==0 )
                 ans="NO";
             
             cout << ans << endl;
