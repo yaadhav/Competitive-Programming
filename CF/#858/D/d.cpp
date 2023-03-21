@@ -19,30 +19,25 @@ int main()
         cin >> n >> q;
 
         vector<ll> a;
-        ll temp;
+        ll temp, sum=0;
 
+        a.push_back(sum);
         for( ll i=0; i<n; i++)
         {
             cin >> temp;
-            a.push_back(temp);            
+            sum+=temp;
+            a.push_back(sum);            
         }
-
-        ll SUM=accumulate( a.begin(), a.end(), 0);
 
         while(q--)
         {
             ll l, r, k;
             cin >> l >> r >> k ;
 
-            vector<ll> b=a;
+            ll in_sum=k*(r-l+1), out_sum=a[r]-a[l-1];
             string ans="YES";
 
-            ll in_sum=k*(r-l+1), out_sum=0;
-            
-            for( ll i=l-1; i<r; i++)
-                out_sum+=b[i];
-
-            if( (SUM+in_sum-out_sum)%2==0 )
+            if( (sum+in_sum-out_sum)%2==0 )
                 ans="NO";
             
             cout << ans << endl;
