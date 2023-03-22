@@ -3,48 +3,42 @@
 #include<bits/stdc++.h>
 using namespace std;
 
-typedef long long int ll;
-
-void Swap( ll &a, ll &b)
-{
-    a=a+b;
-    b=a-b;
-    a=a-b;
-}
+typedef long long ll;
 
 int main()
 {
     ios_base::sync_with_stdio(false);
     cin.tie(NULL);
 
-    int t;
+    ll t;
     cin >> t;
 
     while(t--)
     {
-        ll a, b, x, y, n;
-        cin >> a >> b >> x >> y >> n;
+        ll n;
+        cin >> n;
 
-        if( a-x>=b-y )
+        vector<ll> a, b;
+        ll temp, mina=1, minb=1;
+
+        for( ll i=0; i<n; i++)
         {
-            Swap( a, b);
-            Swap( x, y);
-        }
-
-        ll d=a-x+b-y-n;
-
-        if( d>0 )
-        {
-            y+=d;
-            if( y>b )
+            cin >> temp;
+            if( i%2==0 )
             {
-                d=y-b;
-                y=b;
-                x+=d;
+                a.push_back(temp);
+                if( mina>temp )
+                    mina=temp;
             }
-        }
+            else
+            {
+                b.push_back(temp);
+                if( minb>temp )
+                    minb=temp;
+            }
+        } 
 
-        cout << "ans" << x*y << endl;    
+        
     }
     return 0;
 }
