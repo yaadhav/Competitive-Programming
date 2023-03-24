@@ -19,7 +19,7 @@ int main()
         cin >> n;
 
         vector<ll> a, b;
-        ll temp, mina=1, minb=1;
+        ll temp, amin=1, bmin=1;
 
         for( ll i=0; i<n; i++)
         {
@@ -27,18 +27,16 @@ int main()
             if( i%2==0 )
             {
                 a.push_back(temp);
-                if( mina>temp )
-                    mina=temp;
+                if( amin>temp )
+                    amin=temp;
             }
             else
             {
                 b.push_back(temp);
-                if( minb>temp )
-                    minb=temp;
+                if( bmin>temp )
+                    bmin=temp;
             }
         } 
-
-        
     }
     return 0;
 }

@@ -19,8 +19,7 @@ int main()
             ans="YES";
         
         cout << ans << endl; 
-    } 
-    
+    }
     return 0;
 }
 

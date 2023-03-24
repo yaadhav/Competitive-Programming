@@ -17,8 +17,7 @@ int main()
             cout << "NO\n" ;
         else
             cout << "YES\n" ;
-    } 
-    
+    }
     return 0;
 }
 
