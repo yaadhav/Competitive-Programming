@@ -1,4 +1,4 @@
-// Q : https://codeforces.com/contest/1807/problem/B
+// Q : https://codeforces.com/contest/1806/problem/B
 
 #include <bits/stdc++.h>
 using namespace std;
@@ -14,23 +14,43 @@ int main()
     while(t--)
     {
         int n;
-        cin >> n ;
+        cin >> n;
+        
+        vector<int> a, b;
+        int temp;
 
-        int temp, odd=0, even=0;
         for( int i=0; i<n; i++)
         {
             cin >> temp;
-
-            if( temp%2==0 )
-                even+=temp;
-            else
-                odd+=temp;
+            a.push_back(temp);
         }
 
-        if( even>odd )
-            cout << "YES\n" ;
-        else
-            cout << "NO\n" ;
+        sort( a.begin(), a.end() );
+
+        int ans=0, count=1;
+
+        for( int i=0; i<n-1; i++)
+        {
+            if( a[i]!=a[i+1] )
+            {
+                if( ans!=a[i] )
+                    break;
+
+                if( count<=n-count+1 )
+                    break;
+                else
+                    ans++;
+
+                n-=count;
+                count=1;
+            }
+            else
+                count++;
+        }
+        if( count>n-count+1 )
+            ans++;
+
+        cout << ans << endl ;     
     } 
     
     return 0;

@@ -1,4 +1,4 @@
-// Q : https://codeforces.com/contest/1807/problem/A
+// Q : https://codeforces.com/contest/1806/problem/A
 
 #include <bits/stdc++.h>
 using namespace std;
@@ -13,14 +13,20 @@ int main()
 
     while(t--)
     {
-        int a, b,c;
-        cin >> a >> b >> c;
+        int a, b, c, d;
+        cin >> a >> b >> c >> d;
 
-        if( a+b==c )
-            cout << "+\n" ;
-        else
-            cout << "-\n" ;
-    } 
+        if( d<b || c-a>d-b )
+        {
+            cout << -1 << endl;
+            continue;
+        }
+
+        int ans = (d*2)-(b*2)-c+a ;
+        cout << ans << endl ;
+
+        } 
     
     return 0;
 }
+
