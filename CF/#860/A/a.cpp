@@ -58,15 +58,13 @@ int main()
             continue;
         }
 
-        //if( )
-
         for( int i=n-2; i>=0 && ans=="NO"; i++)
         {
             if( a[i]>a[n-1] )
                 Swap( a[i], b[i]);
         }
 
-        //cout << ans << endl;
+        cout << ans << endl;
     } 
     
     return 0;
