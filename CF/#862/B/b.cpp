@@ -1,3 +1,5 @@
+// Q : https://codeforces.com/contest/1805/problem/B
+
 #include <bits/stdc++.h>
 using namespace std;
  
@@ -12,16 +14,23 @@ int main()
     while(t--)
     {
         int n;
-        cin >> n ;
+        string s;
+        cin >> n >> s;
 
-        vector<int> a;
-        int temp;
+        char ch=s[0];
+        int ind=0;
 
-        for( int i=0; i<n; i++)
+        for( int i=1; i<n; i++)
         {
-            cin >> temp;
-            a.push_back(temp);
+            if( (int)s[i]<=(int)ch )
+            {
+                ch=s[i];
+                ind=i;
+            }
         }
+
+        s.erase(ind,1);        
+        cout << ch << s <<endl;        
     } 
     
     return 0;
