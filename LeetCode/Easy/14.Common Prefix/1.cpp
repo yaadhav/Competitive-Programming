@@ -18,16 +18,15 @@ public:
         }
 
         return common;
-        
     }
 };
 
 int main()
 {
-    int n=0;
-    //cin >> n;
+    int n;
+    cin >> n;
 
-    vector<string> strs={"fliwer","fliw","flight","flite","flirt"};
+    vector<string> strs;
     string temp; 
 
     for( int i=0; i<n; i++)
