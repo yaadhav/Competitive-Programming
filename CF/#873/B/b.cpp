@@ -59,7 +59,6 @@ int main()
         {
             ll ind=Search(c,n,a[i]);
             cout << b[ind] << " ";
-            c[ind]=10000000000;
         }
         cout << endl;
 
