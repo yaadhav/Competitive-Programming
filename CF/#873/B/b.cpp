@@ -5,20 +5,19 @@ using namespace std;
 
 typedef long long ll;
 
-int Search(vector<ll> arr, ll n, ll x)
+int Search(vector<ll> a, ll n, ll x)
 {
     ll l=0, r=n-1;
     while (l <= r) {
 
         int m = l + (r - l) / 2;
-        if (arr[m] == x)
+        if (a[m] == x)
             return m;
-        if (arr[m] < x)
+        if (a[m] < x)
             l = m + 1;
         else
             r = m - 1;
     }
-
     return -1;
 }
  
@@ -49,7 +48,6 @@ int main()
             cin >> temp;
             b.push_back(temp);
         }
-
         c=a;
 
         sort(c.begin(),c.end());
@@ -61,7 +59,6 @@ int main()
             cout << b[ind] << " ";
         }
         cout << endl;
-
     } 
     return 0;
 }
