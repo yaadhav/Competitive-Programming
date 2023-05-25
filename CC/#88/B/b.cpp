@@ -1,38 +1,57 @@
-// Q : https://www.codechef.com/problems/EXISTENCE
+// Q : https://www.codechef.com/problems/COUNTSUB
 
 #include <bits/stdc++.h>
 using namespace std;
 
-typedef unsigned long long int ll;
+typedef long long ll;
 
 int main()
 {
     int t;
-    cin >> t ;
-
+    cin >> t;
+    
     while(t--)
     {
-        ll x, y;
-        cin >> x >> y;
-
-
-        if(x==0 || y==0)
-        {
-            if(x==0 && y==0)
-                cout << "YES" << endl;
-            else
-                cout << "NO" << endl;
-            continue;
-        }
-
-        x*=x;
-        ll check = (x/y)+((4*y)/x);
+        ll n;
+        cin >> n;
         
-        if(check==4 && (x%y)==0 && ((4*y)%x)==0 )
-            cout << "YES" << endl;
-        else
-            cout << "NO" << endl;
+        vector<ll> a;
+        ll temp;
+        
+        for(ll i=0; i<n; i++)
+        {
+            cin >> temp;
+            a.push_back(temp);
+        }
+        
+        ll tot=(n*(n-1))/2;
+        
+        sort( a.begin(), a.end());
+        
+        ll count=1, ans=0;
+        for( ll i=0; i<n-1; i++)
+        {
+            if(a[i]==a[i+1])
+                count++;
+            else
+            {
+                if(count>1)
+                {
+                    ans+=(count*(count-1))/2;
+                    count=1;
+                }
+            }
+        }
+        
+        if(count>1)
+        {
+            ans+=(count*(count-1))/2;
+            count=1;
+        }
+        
+        cout << tot-ans << endl;
     }
+
     return 0;
 }
 
