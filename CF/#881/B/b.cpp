@@ -1,3 +1,5 @@
+// Q : https://codeforces.com/contest/1843/problem/B
+
 #include <bits/stdc++.h>
 using namespace std;
 
@@ -39,7 +41,7 @@ int main()
             {
                 i++;
 
-                if( i==neg.size()-2 && neg[i+1]<0 )
+                if( i==neg.size()-2)
                     check=true;
             }
 
