@@ -18,6 +18,8 @@ public:
             else
                 word+=s[i];
         }
+        if( word.length()>0 )
+            res=word.length();
 
         return res;
     }
