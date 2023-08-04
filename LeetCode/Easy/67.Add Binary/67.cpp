@@ -6,7 +6,6 @@ public:
     string addBinary(string a, string b) {
 
         string temp;
-        if( a.length()>b.length() )
         {
             temp=a;
             a=b;
@@ -38,7 +37,7 @@ public:
                 temp+=to_string(sum);           
         }
 
-        if( extra>0 )
+        if( extra==1 )
             temp+="1";
 
         string res="";
