@@ -35,19 +35,30 @@ int main()
             a.push_back(temp);
         } 
 
-        ll hcf1=a[0], hcf2=a[1];
+        ll hcf1=a[0], hcf2=a[1], lcm1, lcm2=a[1];
         for( ll i=2; i<n; i++)
         {
             if( i%2==0 )
-                hcf1 = a[i]>hcf1 ? hcf(a[i], hcf1) : hcf(hcf1, a[i]) ;         
+            {
+                temp = a[i]>hcf1 ? hcf(a[i], hcf1) : hcf(hcf1, a[i]) ;  
+                lcm1 = (a[i]*hcf1)/temp;
+                hcf1 = temp;
+            }   
             else
-                hcf2 = a[i]>hcf2 ? hcf(a[i], hcf2) : hcf(hcf2, a[i]) ;
+            {
+                temp = a[i]>hcf2 ? hcf(a[i], hcf2) : hcf(hcf2, a[i]) ;
+                lcm2 = (a[i]*hcf2)/temp;
+                hcf2 = temp;
+            }
+            cout << lcm1 << " " << lcm2 << endl;
 
-            if( hcf1==hcf2 )
+            temp = lcm1>lcm2 ? hcf(lcm1, lcm2): hcf(lcm2, lcm1) ;
+
+            if( temp>1 )
                 break;            
         }
 
-        if( hcf1==hcf2 )
+        if( temp>1 )
             cout << 0 << endl;
         else
         {
