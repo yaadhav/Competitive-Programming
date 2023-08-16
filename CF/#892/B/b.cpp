@@ -30,28 +30,32 @@ int main()
         
         s.push_back(n+1);
 
-        int tot=m+add;
-        for( int i=1; i<=m+1; i++)
+        int tot=m+add, minus=0;
+        for( int i=1; i<s.size(); i++)
         {
             if( s[i]-s[i-1]>d )
+            {
                 tot+=(s[i]-s[i-1]-1)/d ;
+                minus=1;
+            }
         }
 
-        int min=0;
-        for( int i=1; i<=m; i++)
+        int minus2=0;
+        for( int i=1; i<s.size()-1; i++)
         {
             int c1=((s[i]-s[i-1]-1)/d) + ((s[i+1]-s[i]-1)/d);
             int c2=(s[i+1]-s[i-1]-1)/d ;
             
             if( c2>c1 )
-                min++;
+                minus2++;
         }
 
+        if( minus==0 )
+            minus2=0;
         if( add==0 )
-            min++;
+            minus2++;
 
-        cout << tot-1 << " " << m-min << endl ;
-
+        cout << tot-minus << " " << m-minus2 << endl ;
     } 
 
     return 0;

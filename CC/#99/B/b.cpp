@@ -1,4 +1,4 @@
-// Q : 
+// Q : https://www.codechef.com/problems/CARDSWIPE
 
 #include <bits/stdc++.h>
 using namespace std;

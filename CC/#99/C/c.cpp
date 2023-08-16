@@ -1,4 +1,4 @@
-// Q : 
+// Q : https://www.codechef.com/problems/ONEFROMK
 
 #include <bits/stdc++.h>
 using namespace std;
