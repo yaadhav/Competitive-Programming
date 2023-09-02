@@ -7,11 +7,23 @@ public:
     {
         unsigned long long int num=1, den=1;
         r = r<=n/2 ? n-r:r ;
-        for( int i=r; i<=r; i--)
-            cout << i << endl;
-        for( int i=2; i<=n-r; i++)
-            cout << i << endl;
-        
+        for( int i=n; i>r; i--)
+        {
+            if( i%2==1 || i>((n-r)*2) )
+                num*=i;
+        }
+
+        int count=0;
+        for( int i=n-r; i>=1; i--)
+        {
+            if( i*2>r )
+                count++;
+            else
+                den*=i;
+        }
+
+        num*=pow(2,count);
+
         return num/den;        
     }
 
