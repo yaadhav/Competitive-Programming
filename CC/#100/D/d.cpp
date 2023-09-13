@@ -1,14 +1,9 @@
+// Q : https://www.codechef.com/problems/PRIMEPERM
+
 #include <bits/stdc++.h>
 using namespace std;
 
 typedef long long int ll;
-
-void Print( ll n )
-{
-    cout << n-1 << " " << n << " ";
-    for( int i=1; i<n-1; i++)
-        cout << i << " ";
-}
 
 int main()
 {
