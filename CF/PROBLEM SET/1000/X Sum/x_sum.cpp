@@ -1,3 +1,5 @@
+// Q : https://codeforces.com/problemset/problem/1676/D
+
 #include <bits/stdc++.h>
 using namespace std;
 
@@ -26,7 +28,7 @@ int main()
         }         
         
         int size = m+n-1 ;
-        vector<int> rd(size), ld(size);
+        vector<int> rd(size), ld;
         for( int i=0; i<n; i++ )
         {
             for( int j=0; j<m; j++)
@@ -35,32 +37,27 @@ int main()
             }
         }
 
-        for( int i=m-1; i>=0; i--)
+        for( int i=0, j=m-1; i<n; )
         {
-            int sum1=0, sum2=0;
-            for( int j=i, k=0; j<m && k<n; j++,k++)
-            {
-                sum1+=a[j][k];
-                sum2+=a[k][j];
-            }
-            ld[i+n-1]=sum1;
-            ld[m-i-1]=sum2;
+            int sum=0;
+            for( int x=i, y=j; x<n && y<m; x++,y++)
+                sum+=a[x][y];
+
+            ld.push_back(sum);
+
+            if( j!=0 )
+                j--;
+            else
+                i++;
         }
-
-        for( int i: rd)
-            cout << i << " ";
-        cout << endl;
-
-        for( int i: ld)
-            cout << i << " ";
-        cout << endl;
         
         int max=0;
         for( int i=0, x=0; i<n; i++, x++)
         {
             for( int j=0, y=x+m-1; j<m; j++, x++, y--)
             {
-                cout << "x&y--->" << x << " " << y << endl;               
+                if( rd[x]+ld[y]-a[i][j]>max )
+                    max=rd[x]+ld[y]-a[i][j];            
             }
             x=i;
         }
