@@ -1,14 +1,14 @@
-// Q :https://codeforces.com/problemset/problem/339/B
-
 #include <bits/stdc++.h>
 using namespace std;
 
+typedef long long int ll;
+
 int main()
 {
-    int n, m;
+    ll n, m;
     cin >> n >> m;
 
-    int a, prev, ans;
+    ll a, prev, ans;
 
     cin >> prev;
     ans=prev-1;
