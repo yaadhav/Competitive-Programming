@@ -38,10 +38,29 @@ int main()
                 max2=temp;
         }
 
-    if( k%2==0 )
-        cout << sum << endl;
-    else
-        cout << sum-min1+max2 << endl;
+        vector<ll> a={ max1, min1, max2, min2};
+        sort( a.begin(), a.end());
+
+        if( n==1 )
+        {
+            if( k%2==1 )
+                cout << a[3] << endl;
+            else
+                cout << a[0] << endl;
+            continue;
+        }
+        
+        sum-=min1+max1;
+
+        if( max1>min2 )
+            sum+=a[2];
+        else
+            sum+=a[1];
+
+        if( k%2==1 )
+            cout << sum+a[3] << endl;
+        else
+            cout << sum+a[0] << endl;
     }
 
     return 0;
