@@ -32,7 +32,7 @@ int main()
                 cout << i << endl;
                 break;
             }
-            if( i>10 && !check )
+            if( i>4 && !check )
             {
                 cout << -1 << endl;
                 break;
