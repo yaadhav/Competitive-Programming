@@ -1,5 +1,3 @@
-// Q : https://codeforces.com/problemset/problem/456/A
-
 #include <bits/stdc++.h>
 using namespace std;
  
@@ -13,7 +11,7 @@ int main()
     for( int i=0; i<n; i++)
     {
         cin >> t1 >> t2;
-        l.push_back(make_pair(t1,t2));
+        l.push_back({t1,t2});
     }
 
     sort( l.begin(), l.end() );
