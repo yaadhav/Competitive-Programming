@@ -5,17 +5,28 @@ class Solution {
 public:
     void merge(vector<int>& nums1, int m, vector<int>& nums2, int n) {
 
-        int l=nums1.size();
-        for( int i=0; i<l-m; i++)
+        vector<int> ans;
+        int l=0, r=0;
+        while( l<m-n && r<n )
         {
-            cout << i << endl;
-            nums1.pop_back();
-        }
+            if( nums1[l]<nums2[r] )
+            {
+                ans.push_back(nums1[l]);
+                l++;
+            } 
+            else
+            {
+                ans.push_back(nums2[r]);
+                r++;
+            }
+        }    
+        
+        for( int i=l; i<m-n; i++)
+            ans.push_back(nums1[i]);
+        for( int i=r; i<n; i++)
+            ans.push_back(nums2[i]);
 
-        for( int i=0; i<n; i++)
-            nums1.push_back(nums2[i]);
-
-        sort(nums1.begin(), nums1.end());        
+        nums1=ans;
     }
 };
 
@@ -27,13 +38,13 @@ int main()
     vector<int> nums1, nums2;
     int temp;
 
-    for( int i=0; i<6; i++)
+    for( int l=0; l<m; l++)
     {
         cin >> temp;
         nums1.push_back(temp);
     }
 
-    for( int i=0; i<n; i++)
+    for( int l=0; l<n; l++)
     {
         cin >> temp;
         nums2.push_back(temp);
@@ -42,8 +53,8 @@ int main()
     Solution sol;
     sol.merge(nums1,m,nums2,n);
 
-    for( auto i : nums1)
-        cout << i << " ";
+    for( auto l : nums1)
+        cout << l << " ";
     
 
     return 0;

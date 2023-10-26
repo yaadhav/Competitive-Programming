@@ -1,3 +1,5 @@
+// Q : https://www.codechef.com/problems/TIES
+
 #include<bits/stdc++.h>
 using namespace std;
 
