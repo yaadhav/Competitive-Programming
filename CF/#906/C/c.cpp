@@ -1,3 +1,5 @@
+// Q : https://codeforces.com/contest/1890/problem/C
+
 #include<bits/stdc++.h>
 using namespace std;
 
@@ -22,16 +24,8 @@ int main()
 
         vector<int> ans;
         int i=0;
-        string check="";
         for( int j=n-1; i<j && i<302; i++, j--)
         {
-            if( check==s.substr(i,j-i+1) )
-            {
-                check="-1";
-                break;
-            }
-            check=s.substr(i,j-i+1);
-
             if( s[i]==s[j] && s[i]=='0' )
             {
                 ans.push_back(j+1);
@@ -47,7 +41,7 @@ int main()
             }
         }
 
-        if( check=="-1" || i==302 )
+        if( i==302 )
             cout << -1 << endl;
         else
         {
