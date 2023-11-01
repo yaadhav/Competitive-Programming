@@ -1,5 +1,3 @@
-// Q : https://codeforces.com/problemset/problem/1365/A
-
 #include <bits/stdc++.h>
 using namespace std;
 
@@ -15,7 +13,7 @@ int main()
         ll n, m;
         cin >> n >> m;
 
-        set<ll> ic, jc;
+        set<ll> i_check, j_check;
 
         for( ll i=0; i<n; i++)
         {
@@ -26,13 +24,13 @@ int main()
 
                 if( temp==1 )
                 {
-                    ic.insert(i);
-                    jc.insert(j);
+                    i_check.insert(i);
+                    j_check.insert(j);
                 }
             }
         }
 
-        ll ans=min( n-ic.size(), m-jc.size());
+        ll ans=min( n-i_check.size(), m-j_check.size());
 
         if(ans%2)
             cout<< "Ashish" << endl;
