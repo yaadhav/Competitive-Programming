@@ -12,7 +12,6 @@ public:
             return ans;
         }
 
-        //Solve( i+1, arr, sum, ans, candidates);
         arr.push_back(candidates[i]);
         sum-=candidates[i];
         Solve( i, arr, sum, ans, candidates);

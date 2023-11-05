@@ -3,34 +3,33 @@ using namespace std;
 
 class Solution {
 public:
-
-    vector<vector<int>> solve(int i, int sum, vector<int> arr, vector<vector<int>>& ans, vector<int>& candidates, int target, int &count)
+    void findCombination( int ind, vector<int> arr, vector<vector<int>>& res, vector<int> candidates, int target)
     {
-        if( i==candidates.size() )
+        if( target==0 )
         {
-            if( sum==target )
-            {
-                ans.push_back(arr);
-                count++;
-                cout << count << endl;
-                return ans;
-            }
-            return ans;
+            res.push_back(arr);
+            return;
         }
 
-        solve( i+1, sum, arr, ans, candidates, target, count);
-        arr.push_back(candidates[i]);
-        solve( i+1, sum+candidates[i], arr, ans, candidates, target, count);
-        return ans;
+        for( int i=ind; i<candidates.size(); i++)
+        {
+            if( i>ind && candidates[i]==candidates[i-1] ) continue;
+            if( candidates[i]>target ) break;
+
+            arr.push_back(candidates[i]);
+            findCombination( i+1, arr, res, candidates, target-candidates[i]);
+            arr.pop_back();
+        }
+
+        return;     
     }
 
-    vector<vector<int>> combinationSum2(vector<int>& candidates, int target) 
-    {
-        vector<vector<int>> ans;
-        vector<int> arr;
-        int count=0;
-        ans=solve( 0, 0, arr, ans, candidates, target, count);
-        return ans;  
+    vector<vector<int>> combinationSum2(vector<int>& candidates, int target) {
+        sort( candidates.begin(), candidates.end());
+        vector<vector<int>> res;
+        findCombination( 0, {}, res, candidates, target);
+
+        return res;
     }
 };
 
@@ -38,7 +37,7 @@ int main()
 {
     vector<int> candidates={1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1};
     int target=3;
-
+                                                                      
     Solution s;
     vector<vector<int>> res = s.combinationSum2( candidates, target);
 
