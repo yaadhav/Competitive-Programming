@@ -1,3 +1,5 @@
+// Q : https://codeforces.com/problemset/problem/313/B
+
 #include <bits/stdc++.h>
 using namespace std;
 
@@ -9,22 +11,26 @@ int main()
     string s;
     cin >> s >> m;
 
+    vector<ll> check={0};
+
+    for( int i=0, j=0; i<s.length()-1; i++)
+    {
+        if( s[i]!=s[i+1] )
+            check.push_back(j);
+        else
+        {
+            j++;
+            check.push_back(j);
+        }
+    }
+
     while(m--)
     {
         ll l, r;
         cin >> l >> r;
 
-        ll ans=0;
-        for( ll i=l; i<r; i++)
-        {
-            if( s[i-1]==s[i] )
-                ans++;
-        }
-
-        cout << ans << endl;
+        cout << check[r-1]-check[l-1] << endl;
     }
-
-
 
     return 0;
 }
