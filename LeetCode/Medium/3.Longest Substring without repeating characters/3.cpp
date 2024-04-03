@@ -5,31 +5,26 @@ class Solution {
 public:
     int lengthOfLongestSubstring(string s) {
 
-        vector<int> freq(26);
-        string check="";
+        vector<int> freq(95, -1);
 
-        int add=0, ans=0;
+        int curr=0, ans=0, check=-1;
         for( int i=0; i<s.length(); i++)
         {
-            int ind=int(s[i])-96;
-            ind=max(0, ind);
-            if( freq[ind]==1 )
+            if( freq[int(s[i])-32]<=check )
             {
-                if( add>ans )
-                    ans=add;
-                add=0;
-                fill( freq.begin(), freq.end(), 0);
-                i--;
+                freq[int(s[i])-32]=i;
+                curr++;
             }
             else
             {
-                freq[ind]++;  
-                add++;
-            }          
+                curr = i-freq[int(s[i])-32];
+                check=freq[int(s[i])-32];
+                freq[int(s[i]-32)]=i;
+            }
+            
+            ans=max( curr, ans);
         }
 
-        if( add>ans )
-            ans=add;
 
         return ans;
     }

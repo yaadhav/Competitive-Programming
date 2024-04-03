@@ -17,8 +17,6 @@ int main() {
         ll a = n/l, b = m/l;
         ll a1=x%l==0 ? l:x%l, b2=m%l, a2=n%l, b1=y%l==0 ? l:y%l;
 
-        
-
         if( a1<=a2 )
             a++;
         if( b1<=b2 )
