@@ -6,34 +6,38 @@ public:
 
     vector<vector<int>> fourSum(vector<int>& nums, int target) {
 
-        vector<vector<int>> res;
         sort( nums.begin(), nums.end());
 
-        for( int i=0; i<nums.size()-3; i++)
+        vector<vector<int>> res;
+        for( int a=0; a<nums.size(); a++)
         {
-            for( int j=i+2, k=nums.back(); j<k; )
+            if(a==0);
+            else if( nums[a]==nums[a-1] ) continue;
+
+            for( int b=a+1; b<nums.size(); b++)
             {
-                cout << i << j << k << endl;
-                if( nums[i]+nums[i+1]+nums[j]+nums[k]>target )
+                if( res.size()==0 );
+                else if( res.back()[0]==nums[a] && res.back()[1]==nums[b] )
+                    continue;
+
+                for( int c=b+1, d=nums.size()-1; c<d; )
                 {
-                    k--;
-                    while( nums[k]==nums[k-1] && j>k )
-                        k--;
-                }
-                else if( nums[i]+nums[i+1]+nums[j]+nums[k]<target )
-                {
-                    j++;
-                    while( nums[j]==nums[j-1] && j>k )
-                        j++;
-                }
-                else
-                {
-                    res.push_back( { nums[i], nums[i+1], nums[j], nums[k]});
-                    j++; k--;
-                    while( nums[k]==nums[k-1] && j>k )
-                        k--;
-                    while( nums[j]==nums[j-1] && j>k )
-                        j++;
+                    long long int sum=nums[a];
+                    sum+=nums[b];
+                    sum+=nums[c];
+                    sum+=nums[d];
+
+                    if( sum==target ) {
+
+                        if( res.size()==0 ) 
+                            res.push_back({nums[a], nums[b], nums[c], nums[d]});
+                        else if( res.back()[0]!=nums[a] || res.back()[1]!=nums[b] ||  res.back()[2]!=nums[c] || res.back()[3]!=nums[d] )
+                            res.push_back({nums[a], nums[b], nums[c], nums[d]});
+
+                        c++, d--;
+                    }
+                    else if( sum<target ) c++;
+                    else d--;
                 }
             }
         }
@@ -44,7 +48,8 @@ public:
 
 int main()
 {
-    vector<int> nums={ -5, -4, -3, -3, -2, -2, 0, 1, 3, 3, 5};
+    int n=1e9;
+    vector<int> nums={ n, n, n, n};
     int target=-11;
 
     Solution s;

@@ -3,64 +3,34 @@ using namespace std;
 
 class Solution {
 public:
-    vector<int> searchRange(vector<int>& nums, int target) {
+    int mySqrt(int x) {
 
-        int l=0, h=nums.size()-1, ans1=-1, ans2=-1;
+        long long int l=1, h=x;
 
         while( l<=h )
         {
-            int mid=(l+h+1)/2;
+            long long int mid=(l+h)/2;
 
-            if( nums[mid]==target )
-            {
-                ans1=mid;
-                l=mid+1;
-            }
-            else if( nums[mid]>target )
+            if( mid*mid==x )
+                return mid;
+            else if( mid*mid>x )
                 h=mid-1;
             else
                 l=mid+1;
         }
 
-        if(ans1>=0)
-            ans1=h;
-
-        l=0, h=nums.size()-1;
-        while( l<=h )
-        {
-            int mid=(l+h+1)/2;
-
-            if( nums[mid]==target )
-            {
-                ans2=mid;
-                h=mid-1;
-            }
-            else if( nums[mid]>target )
-                h=mid-1;
-            else
-                l=mid+1;
-        }
-
-        if(ans2>=0)
-            ans2=l;
-
-        return {ans2,ans1};  
-        
+        return h;        
     }
 };
 
 int main()
 {
-    int n, target;
-    cin >> n >> target;
-
-    vector<int> nums(n);
-
-    for( int &i: nums)
-        cin >> i;
+    int x=89;
 
     Solution sol;
-    vector<int> result=sol.searchRange(nums,target);
+    int res=sol.mySqrt(x);
 
-    cout << result[0] << " " << result[1];
+    cout << res << endl;
+
+    return 0;
 }

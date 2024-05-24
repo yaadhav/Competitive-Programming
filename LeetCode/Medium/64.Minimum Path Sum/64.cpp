@@ -4,39 +4,42 @@ using namespace std;
 class Solution {
 public:
 
-    void solve( int i, int j, int cost, vector<vector<int>> grid, long long int &ans)
-    {
-        if( i==grid.size()-1 && j==grid[0].size()-1 )
-        {
-            long long int check=cost+grid[i][j];
-            ans = min( check, ans);
-            return;
-        }
+    int minPathSum(vector<vector<int>>& grid) {    
 
-        cost+=grid[i][j];
-        if( i+1<grid.size() )
-            solve( i+1, j, cost, grid, ans);
-        if( j+1<grid[0].size() )
-            solve( i, j+1, cost, grid, ans);
+        int m=grid.size(), n=grid[0].size();
 
-        return;
-    }
+        vector<vector<int>> dp( m, vector<int>(n));
 
-    int minPathSum(vector<vector<int>>& grid) 
-    {
-        long long int ans=INT_MAX;
-        solve( 0, 0, 0, grid, ans);
+        dp[0][0]=grid[0][0];
 
-        return ans;        
+        for( int i=0; i<m; i++) {
+            for( int j=0; j<n; j++) {
+                int up=INT_MAX, left=INT_MAX; 
+                if( i-1>=0 ) up=dp[i-1][j]+grid[i][j];
+                if( j-1>=0 ) left=dp[i][j-1]+grid[i][j];
+                
+                if( i>0 || j>0 )
+                dp[i][j]=min( up, left);
+            }
+        } 
+
+        return dp[m-1][n-1];
     }
 };
 
+
 int main()
 {
-    vector<vector<int>> grid={ { 1, 2, 3}, { 4, 5, 6}};
+    vector<vector<int>> grid = {
+        { 1, 3, 1},
+        { 4, 3, 5},
+        { 3, 2, 4}
+    };
 
     Solution s;
-    cout << s.minPathSum(grid) << endl;
+    int ans = s.minPathSum(grid);
 
-    cout << grid.size() << grid[0].size() << endl;
+    cout << ans;
+
+    return 0;
 }

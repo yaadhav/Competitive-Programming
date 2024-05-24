@@ -4,23 +4,23 @@ using namespace std;
 class Solution {
 public:
     vector<int> rearrangeArray(vector<int>& nums) {
-        vector<int> p, n;
 
-        for( auto i : nums)
+        vector<int> res(nums.size());
+
+        int p=0, n=1;
+
+        for( int i:nums )
         {
-            if( i>0 )
-                p.push_back(i);
-            else
-                n.push_back(i);
+            if(i>0) {
+                res[p]=i;
+                p+=2;
+            }
+            else {
+                res[n]=i;
+                n+=2;
+            }
         }
-
-        for( int i=0, j=0; i<nums.size(); i+=2, j++)
-        {
-            nums[i]=p[j];
-            nums[i+1]=n[j];            
-        }
-
-        return nums;        
+        return res;
     }
 };
 
