@@ -3,39 +3,40 @@ using namespace std;
 
 class Solution {
 public:
-    long long mostPoints(vector<vector<int>>& questions) {
 
-        for( int i=0; i<questions.size(); i++ )
-            questions[i][1]+=i+1;
+    long long recurse( int ind, vector<vector<int>> ques ) {
 
-        vector<long long> c(questions.size());
+        if( ind>=ques.size() )
+            return 0;
 
-        for( auto i: questions)
-            c[i[1]]=max(c[i[1]],(long long)i[0]);
+        int notTake=recurse( ind+1, ques);
+        int take=recurse( ind+ques[ind][1]+1, ques)+ques[ind][0];
 
+        return max( take, notTake);
+    }
 
-        for( int i=1; i<c.size(); i++)
-            c[i]=max(c[i],c[i-1]);
+    long long mostPoints(vector<vector<int>>& ques) {
+        
+        int n=ques.size();
 
-        long long ans=c[0];
-        for( int i=1; i<questions.size(); i++)        
-        {
-            c[i]=max( c[i], c[i-1]);
-            long long check = c[i]+questions[i][0];
-            ans=max( ans, check);
-            c[questions[i][1]]=max( c[questions[i][1]], ans);
+        vector<int> dp(n+1);
+        for( int i=n-1; i>=0; i--) {
+            if( i+ques[i][1]+1<=n )
+                dp[i]=max( dp[i+1], dp[i+ques[i][1]+1]+ques[i][0]);
+            else    
+                dp[i]=max( dp[i+1], ques[i][0]);
         }
 
-        return ans;        
+        return dp[0];
     }
 };
 
 int main()
 {
-    vector<vector<int>> questions={ {3,2}, {4,2}, {5,2}, {1,1}, {6,4}, {2,5}, {4,2}, {1,2}, {3,2}, {2,4}, {4,1}, {6,1}};
+    vector<vector<int>> ques={ {3,2}, {4,3}, {4,4}, {2,5}};
 
     Solution s;
-    long long ans = s.mostPoints(questions);
+    long long ans = s.mostPoints(ques);
 
     cout << ans << endl;
 
