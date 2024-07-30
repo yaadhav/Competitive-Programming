@@ -6,7 +6,7 @@ public:
 
     string longestPalindrome(string s) {
         int n=s.length();
-        vector<vector<int>> dp( n+1, vector<int>(n+1));
+        vector<vector<int>> dp( n, vector<int>(n));
 
         for( int i=0; i<n; i++) 
             dp[i][i]=1;
@@ -41,7 +41,7 @@ public:
 
 int main()
 {
-    string s ="cbbd";
+    string s ="acabbada";
 
     Solution sol;
     string ans = sol.longestPalindrome(s);
